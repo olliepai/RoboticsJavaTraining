@@ -34,7 +34,7 @@ public class JavaClass1_P {
 				break;
 
 			case "temperature":
-				converter.converterT("temperature", "Farenheit", "Celsius");
+				converter.converterT("temperature", "Farenheit", "Celsius", "Kelvin");
 				break;
 
 			case "power":
@@ -65,20 +65,30 @@ public class JavaClass1_P {
 		}
 	}
 
-	public void converterT(String t, String u1, String u2) {
-		String direction = JOptionPane.showInputDialog(u1 + " to " + u2 + " or " + u2 + " to " + u1 + "?");
-		if (direction.equals(u1 + " to " + u2)) {
+	public void converterT(String t, String u1, String u2, String u3) {
+		String direction = JOptionPane.showInputDialog(u1 + " to " + u2 + " and " + u3 + " or " + u2 + " to " + u1 + " and " + u3 + " or " + u3 + " to " + u1 + " and " + u2 +"?");
+		if (direction.equals(u1 + " to " + u2 + " and " + u3)) {
 			String o1S = JOptionPane.showInputDialog("Enter the " + t + " you want to convert. (in " + u1 + ")");
 			int o1I = Integer.parseInt(o1S);
 			double o2I = (o1I - 32) / 1.8;
-			JOptionPane.showMessageDialog(null, o1I + "° " + u1 + " is " + o2I + "° " + u2);
+			double o3I = (o1I + 459.67)/(9/5);
+			JOptionPane.showMessageDialog(null, o1I + "° " + u1 + " is " + o2I + "° " + u2 + " and " + o3I + " " + u3);
 		}
 
-		if (direction.equals(u2 + " to " + u1)) {
+		if (direction.equals(u2 + " to " + u1 + " and " + u3)) {
 			String o1S = JOptionPane.showInputDialog("Enter the " + t + " you want to convert. (in " + u2 + ")");
 			int o1I = Integer.parseInt(o1S);
 			double o2I = o1I * 1.8 + 32;
-			JOptionPane.showMessageDialog(null, o1I + "° " + u2 + " is " + o2I + "° " + u1);
+			double o3I = o1I - 274.15;
+			JOptionPane.showMessageDialog(null, o1I + "° " + u2 + " is " + o2I + "° " + u1 + " and " + o3I + " " + u3);
+		}
+		
+		if (direction.equals(u3 + " to " + u1 + " and " + u2)) {
+			String o1S = JOptionPane.showInputDialog("Enter the " + t + " you want to convert. (in " + u3 + ")");
+			int o1I = Integer.parseInt(o1S);
+			double o2I = (o1I * (9/5)) - 459.67;
+			double o3I = o1I + 273.15;
+			JOptionPane.showMessageDialog(null, o1I + " " + u3 + " is " + o2I + "° " + u1 + " and " + o3I + "° " + u2);
 		}
 	}
 
